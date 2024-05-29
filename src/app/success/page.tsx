@@ -1,10 +1,11 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect , Suspense} from "react";
 import Confetti from "react-confetti";
 
 const SuccessPage = () => {
   const searchParams = useSearchParams();
+  
   const router = useRouter();
 
   const orderId = searchParams.get("orderId");
@@ -23,7 +24,10 @@ const SuccessPage = () => {
 
   return (
     <div className="flex flex-col gap-6 items-center justify-center h-[calc(100vh-180px)]">
+      <Suspense>
       <Confetti width={2000} height={1000} />
+      </Suspense>
+     
       <h1 className="text-6xl text-green-700">Successful</h1>
       <h2 className="text-xl font-medium">
         We sent the invoice to your e-mail
